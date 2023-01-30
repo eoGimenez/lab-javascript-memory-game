@@ -42,10 +42,14 @@ window.addEventListener('load', (event) => {
   document.querySelector('#memory-board').innerHTML = html;
 
   // Bind the click event of each element to a function
-  document.querySelectorAll('.card').forEach((card) => {
+  document.querySelectorAll('.card').forEach((card, i) => {
     card.addEventListener('click', () => {
       // TODO: write some code here
+      card.classList.toggle("turned")
+      memoryGame.pickedCards.push(card)
+      console.log(memoryGame.pickedCards)
       console.log(`Card clicked: ${card}`);
-    });
+      memoryGame.checkIfPair(card[i-1], card[i])
+      });
   });
 });
